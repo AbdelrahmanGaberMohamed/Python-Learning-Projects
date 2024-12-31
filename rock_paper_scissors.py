@@ -9,6 +9,17 @@ rock_paper = f'Paper {paper} Covers Rock  {rock}'
 rock_scissors = f'Rock {rock}  Crushes scissors {scissors}'
 paper_scissors = f'Scissors {scissors}  Cuts Paper {paper}'
 player_score = computer_score = 0
+choices = ('r', 'p', 's')
+def rock_paper_scissros(input_char):
+    match input_char:
+        case 'r':
+            input_char = rock
+        case 'p':
+            input_char = paper
+        case 's':
+            input_char = scissors
+    #print(input_char)
+    return input_char
 
 while True:
     print(' ' *6 + f'ScoreBoard\n   Player  |   Computer \n     {player_score}           {computer_score}\n')
@@ -28,26 +39,15 @@ while True:
     player_win_streak = 0 
 
     while computer_win_streak < 2 and player_win_streak < 2:
-        computer_hand = random.randint(1,3)
-        match computer_hand:
-            case 1:
-                computer_hand = rock
-            case 2:
-                computer_hand = paper
-            case 3:
-                computer_hand = scissors
-        player_hand = input('Rock, Paper, Scissors (r,p,s): ').lower()
-        if player_hand != 'r' and player_hand != 'p' and player_hand != 's':
+        computer_choice = random.choice(choices)
+        computer_hand = rock_paper_scissros(computer_choice)
+
+        player_choice = input('Rock, Paper, Scissors (r,p,s): ').lower()
+        if player_choice not in choices:
             print('Invalid Input! 😟')
             continue
         else:
-            match player_hand:
-                case 'r':
-                    player_hand = rock
-                case 'p':
-                    player_hand = paper
-                case 's':
-                    player_hand = scissors
+            player_hand = rock_paper_scissros(player_choice)
             score_board = f'    Player  |   Computer \n     {player_hand}           {computer_hand}\n'
             # Game Score logic:
             #   Rock beats scissors.
