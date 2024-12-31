@@ -5,9 +5,6 @@ paper = "📄"
 scissors = "✂️"
 computer_win = 'Computer Wins 😔'
 player_win = 'Player Wins 👑'
-rock_paper = f'Paper {paper} Covers Rock  {rock}'
-rock_scissors = f'Rock {rock}  Crushes scissors {scissors}'
-paper_scissors = f'Scissors {scissors}  Cuts Paper {paper}'
 player_score = computer_score = 0
 choices = ('r', 'p', 's')
 def rock_paper_scissros(input_char):
@@ -56,28 +53,12 @@ while True:
             if player_hand == computer_hand:
                 print(f'Draw')
                 continue
-            if player_hand == rock and computer_hand == paper:
-                print(score_board + rock_paper)
+            if (player_hand == rock and computer_hand == paper) or (player_hand == paper and computer_hand == scissors) or (player_hand == scissors and computer_hand == rock):
+                print(score_board)
                 print(computer_win)
                 computer_win_streak +=1
-            elif player_hand == rock and computer_hand == scissors:
-                print(score_board + rock_scissors)
-                print(player_win)
-                player_win_streak +=1
-            elif player_hand == paper and computer_hand == rock:
-                print(score_board + rock_paper)
-                print(player_win)
-                player_win_streak +=1
-            elif player_hand == paper and computer_hand == scissors:
-                print(score_board + paper_scissors)
-                print(computer_win)
-                computer_win_streak +=1
-            elif player_hand == scissors and computer_hand == rock: 
-                print(score_board + rock_scissors)
-                print(computer_win)
-                computer_win_streak +=1
-            elif player_hand == scissors and computer_hand == paper:
-                print(score_board + paper_scissors)
+            elif (player_hand == rock and computer_hand == scissors) or (player_hand == paper and computer_hand == rock) or (player_hand == scissors and computer_hand == paper):
+                print(score_board)
                 print(player_win)
                 player_win_streak +=1
             else:
